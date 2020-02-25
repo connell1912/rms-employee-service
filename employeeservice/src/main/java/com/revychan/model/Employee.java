@@ -5,7 +5,7 @@ package com.revychan.model;
  */
 public class Employee {
 
-    private int id;
+    private int empId;
     private String firstName;
     private String lastName;
     private String email;
@@ -13,12 +13,12 @@ public class Employee {
     private Department department;
     private ResourceMetadata rmd;
 
-    public int getId() {
-        return id;
+    public int empId() {
+        return empId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setempId(int empId) {
+        this.empId = empId;
     }
 
     public String getFirstName() {
@@ -93,7 +93,7 @@ public class Employee {
         result = prime * result + ((department == null) ? 0 : department.hashCode());
         result = prime * result + ((email == null) ? 0 : email.hashCode());
         result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-        result = prime * result + id;
+        result = prime * result + empId;
         result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
         result = prime * result + ((rmd == null) ? 0 : rmd.hashCode());
         result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -121,7 +121,7 @@ public class Employee {
                 return false;
         } else if (!firstName.equals(other.firstName))
             return false;
-        if (id != other.id)
+        if (empId != other.empId)
             return false;
         if (lastName == null) {
             if (other.lastName != null)
