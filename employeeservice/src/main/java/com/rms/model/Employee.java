@@ -1,7 +1,9 @@
 package com.rms.model;
 
+import java.util.Objects;
+
 /**
- * An employee 
+ * An employee
  */
 public class Employee {
 
@@ -9,20 +11,36 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private String title;
     private Department department;
     private ResourceMetadata rmd;
 
-    public int empId() {
-        return empId;
+
+    public Employee() {
     }
 
-    public void setempId(int empId) {
+    public Employee(int empId, String firstName, String lastName, String email, String password, String title, Department department, ResourceMetadata rmd) {
+        this.empId = empId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.title = title;
+        this.department = department;
+        this.rmd = rmd;
+    }
+
+    public int getEmpId() {
+        return this.empId;
+    }
+
+    public void setEmpId(int empId) {
         this.empId = empId;
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -30,7 +48,7 @@ public class Employee {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
@@ -38,15 +56,23 @@ public class Employee {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -54,7 +80,7 @@ public class Employee {
     }
 
     public Department getDepartment() {
-        return department;
+        return this.department;
     }
 
     public void setDepartment(Department department) {
@@ -62,83 +88,83 @@ public class Employee {
     }
 
     public ResourceMetadata getRmd() {
-        return rmd;
+        return this.rmd;
     }
 
     public void setRmd(ResourceMetadata rmd) {
         this.rmd = rmd;
     }
 
-    @Override
-    public String toString() {
-        return "Employee [department=" + department + ", email=" + email + ", firstName=" + firstName + ", empId=" + empId
-                + ", lastName=" + lastName + ", rmd=" + rmd + ", title=" + title + "]";
+    public Employee empId(int empId) {
+        this.empId = empId;
+        return this;
     }
 
-    public Employee(int empId, String firstName, String lastName, String email, String title, Department department,
-            ResourceMetadata rmd) {
-        this.empId = empId;
+    public Employee firstName(String firstName) {
         this.firstName = firstName;
+        return this;
+    }
+
+    public Employee lastName(String lastName) {
         this.lastName = lastName;
+        return this;
+    }
+
+    public Employee email(String email) {
         this.email = email;
+        return this;
+    }
+
+    public Employee password(String password) {
+        this.password = password;
+        return this;
+    }
+
+    public Employee title(String title) {
         this.title = title;
+        return this;
+    }
+
+    public Employee department(Department department) {
         this.department = department;
+        return this;
+    }
+
+    public Employee rmd(ResourceMetadata rmd) {
         this.rmd = rmd;
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Employee)) {
+            return false;
+        }
+        Employee employee = (Employee) o;
+        return empId == employee.empId && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(email, employee.email) && Objects.equals(password, employee.password) && Objects.equals(title, employee.title) && Objects.equals(department, employee.department) && Objects.equals(rmd, employee.rmd);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((department == null) ? 0 : department.hashCode());
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-        result = prime * result + empId;
-        result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-        result = prime * result + ((rmd == null) ? 0 : rmd.hashCode());
-        result = prime * result + ((title == null) ? 0 : title.hashCode());
-        return result;
+        return Objects.hash(empId, firstName, lastName, email, password, title, department, rmd);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Employee other = (Employee) obj;
-        if (department != other.department)
-            return false;
-        if (email == null) {
-            if (other.email != null)
-                return false;
-        } else if (!email.equals(other.email))
-            return false;
-        if (firstName == null) {
-            if (other.firstName != null)
-                return false;
-        } else if (!firstName.equals(other.firstName))
-            return false;
-        if (empId != other.empId)
-            return false;
-        if (lastName == null) {
-            if (other.lastName != null)
-                return false;
-        } else if (!lastName.equals(other.lastName))
-            return false;
-        if (rmd == null) {
-            if (other.rmd != null)
-                return false;
-        } else if (!rmd.equals(other.rmd))
-            return false;
-        if (title == null) {
-            if (other.title != null)
-                return false;
-        } else if (!title.equals(other.title))
-            return false;
-        return true;
+    public String toString() {
+        return "{" +
+            " empId='" + getEmpId() + "'" +
+            ", firstName='" + getFirstName() + "'" +
+            ", lastName='" + getLastName() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", password='" + getPassword() + "'" +
+            ", title='" + getTitle() + "'" +
+            ", department='" + getDepartment() + "'" +
+            ", rmd='" + getRmd() + "'" +
+            "}";
     }
+
+ 
 }
 
