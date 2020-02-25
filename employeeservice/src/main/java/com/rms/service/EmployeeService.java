@@ -1,6 +1,6 @@
-package com.revychan.service;
+package com.rms.service;
 
-import com.revychan.model.Employee;
+import com.rms.model.Employee;
 
 import org.springframework.data.repository.CrudRepository;
 
