@@ -71,13 +71,13 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee [department=" + department + ", email=" + email + ", firstName=" + firstName + ", id=" + id
+        return "Employee [department=" + department + ", email=" + email + ", firstName=" + firstName + ", empId=" + empId
                 + ", lastName=" + lastName + ", rmd=" + rmd + ", title=" + title + "]";
     }
 
-    public Employee(int id, String firstName, String lastName, String email, String title, Department department,
+    public Employee(int empId, String firstName, String lastName, String email, String title, Department department,
             ResourceMetadata rmd) {
-        this.id = id;
+        this.empId = empId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
