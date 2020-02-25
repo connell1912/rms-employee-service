@@ -10,7 +10,10 @@ public class Employee {
     private String lastName;
     private String email;
     private String title;
-    private Department department;
-    private ResourceMetadata rmd;
+    // private Department department;
+    // private ResourceMetadata rmd;
+
+
+    
     
 }
