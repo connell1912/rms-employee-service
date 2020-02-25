@@ -1,4 +1,4 @@
-package com.revychan.model;
+package com.rms.model;
 
 /**
  * Employee
