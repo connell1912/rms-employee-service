@@ -1,4 +1,4 @@
-package com.rms.employeeservice;
+package com.rms;
 
 import com.rms.dao.EmployeeDao;
 import com.rms.model.Employee;
