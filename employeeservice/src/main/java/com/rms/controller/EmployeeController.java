@@ -1,5 +1,7 @@
 package com.rms.controller;
 
+import java.util.Optional;
+
 import com.rms.dao.EmployeeDao;
 import com.rms.model.Employee;
 
@@ -12,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
  * EmployeeController
  */
 
- @RestController
+@RestController
 public class EmployeeController {
 
     @Autowired
     private EmployeeDao ed;
 
     @GetMapping(value = "/{id}")
-    public Employee getById(@PathVariable("id") int id){
-        return ed.getById(id);
+    public Optional<Employee> getById(@PathVariable("id") int id) {
+        return ed.findById(id);
     }
 
     
