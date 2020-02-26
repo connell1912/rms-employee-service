@@ -27,9 +27,9 @@ public class Employee {
     private String lastName;
     private String email;
     private String password;
-    private String title;
-    private Department department;
-    private ResourceMetadata rmd;
+    // private String title;
+    // private Department department;
+    // private ResourceMetadata rmd;
 
     @Enumerated(EnumType.ORDINAL)
     private Role role;
@@ -37,16 +37,14 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int empId, String firstName, String lastName, String email, String password, String title,
-            Department department, ResourceMetadata rmd) {
+    public Employee(int empId, String firstName, String lastName, String email, String password) {
         this.empId = empId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.title = title;
-        this.department = department;
-        this.rmd = rmd;
+        // this.title = title;
+        // this.department = department;
     }
 
     public Employee(String firstName, String lastName, String email, String password, Role role) {
@@ -97,30 +95,6 @@ public class Employee {
         this.password = password;
     }
 
-    public String getTitle() {
-        return this.title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Department getDepartment() {
-        return this.department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public ResourceMetadata getRmd() {
-        return this.rmd;
-    }
-
-    public void setRmd(ResourceMetadata rmd) {
-        this.rmd = rmd;
-    }
-
     public Employee empId(int empId) {
         this.empId = empId;
         return this;
@@ -146,21 +120,6 @@ public class Employee {
         return this;
     }
 
-    public Employee title(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public Employee department(Department department) {
-        this.department = department;
-        return this;
-    }
-
-    public Employee rmd(ResourceMetadata rmd) {
-        this.rmd = rmd;
-        return this;
-    }
-
     public Role getRole() {
         return this.role;
     }
@@ -179,21 +138,19 @@ public class Employee {
         Employee employee = (Employee) o;
         return empId == employee.empId && Objects.equals(firstName, employee.firstName)
                 && Objects.equals(lastName, employee.lastName) && Objects.equals(email, employee.email)
-                && Objects.equals(password, employee.password) && Objects.equals(title, employee.title)
-                && Objects.equals(department, employee.department) && Objects.equals(rmd, employee.rmd);
+                && Objects.equals(password, employee.password) && Objects.equals(role, employee.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(empId, firstName, lastName, email, password, title, department, rmd);
+        return Objects.hash(empId, firstName, lastName, email, password, role);
     }
 
     @Override
     public String toString() {
         return "{" + " empId='" + getEmpId() + "'" + ", firstName='" + getFirstName() + "'" + ", lastName='"
                 + getLastName() + "'" + ", email='" + getEmail() + "'" + ", password='" + getPassword() + "'"
-                + ", title='" + getTitle() + "'" + ", department='" + getDepartment() + "'" + ", rmd='" + getRmd() + "'"
-                + "}";
+                + ", role='" + getRole() + "'" + "}";
     }
 
 }
