@@ -32,9 +32,6 @@ public class Employee {
     // private String title;
     @Convert(converter = deptConverter.class)
     private Department department;
-
-    // private ResourceMetadata meta;
-
     @Enumerated(EnumType.STRING)
     private Role role;
 
