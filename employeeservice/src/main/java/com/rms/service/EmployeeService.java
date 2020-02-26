@@ -21,7 +21,15 @@ public class EmployeeService {
     @Autowired
     EmployeeDao ed;
 
+    public Optional<Employee> findById(int id) {
+        return ed.findById(id);
+    }
+
     public void save(Employee emp) {
+        ed.save(emp);
+    }
+
+    public void update(Employee emp) {
         ed.save(emp);
     }
 
@@ -32,10 +40,5 @@ public class EmployeeService {
     public List<Employee> findAll() {
         return (List<Employee>) ed.findAll();
     }
-
-    public Optional<Employee> findById(int id) {
-        return ed.findById(id);
-    }
-
 
 }

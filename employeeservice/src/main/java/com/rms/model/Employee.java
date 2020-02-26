@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Convert;
 
 /**
  * An employee
@@ -29,7 +30,7 @@ public class Employee {
     private String email;
     private String password;
     // private String title;
-    @Enumerated(EnumType.STRING)
+    @Convert(converter = deptConverter.class)
     private Department department;
 
     // private ResourceMetadata meta;
@@ -140,12 +141,5 @@ public class Employee {
     public int hashCode() {
         return Objects.hash(empId, firstName, lastName, email, password, department, role);
     }
-
-
-
-    
-
-    
-    
 
 }
