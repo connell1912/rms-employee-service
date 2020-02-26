@@ -1,6 +1,7 @@
 package com.rms;
 
 import com.rms.dao.EmployeeDao;
+import com.rms.model.Department;
 import com.rms.model.Employee;
 import com.rms.model.Role;
 
@@ -21,13 +22,17 @@ public class DemoApplication {
 	@Bean
 	CommandLineRunner runner(EmployeeDao ed) {
 		return args -> {
-			Employee e = new Employee();
-			e.setFirstName("Thomas");
-			e.setLastName("Wayne");
-			e.setEmail("gotham@email.com");
-			e.setPassword("batdad777");
-			e.setRole(Role.BLDG_MNGR);
-			ed.save(e);
+			// Employee e = new Employee();
+			// e.setFirstName("Thomas");
+			// e.setLastName("Wayne");
+			// e.setEmail("gotham@email.com");
+			// e.setPassword("batdad777");
+			// e.setRole(Role.BLDG_MNGR);
+			// ed.save(e);
+			ed.save(new Employee("Joseph","Joestar","overdriver@email.com","verynice",Department.STAGING,Role.BLDG_MNGR));
+			ed.save(new Employee("Ceasar","Zeppeli","bubble@email.com","wammuuuu",Department.TRAINING,Role.TRAINER));
+			ed.save(new Employee("Lisa","Lisa","teach@email.com","hamon",Department.QC,Role.TRNG_MNGR));
+			ed.save(new Employee("Robert","Speedwagon","narrate@email.com","thisbattle",Department.HR,Role.BLDG_MNGR));
 		};
 	}
 
