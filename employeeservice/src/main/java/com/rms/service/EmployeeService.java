@@ -1,13 +1,10 @@
 package com.rms.service;
 
-import java.util.List;
-
 import com.rms.dao.EmployeeDao;
+import com.rms.model.Employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.rms.model.Employee;
 
 /**
  * @author Robert's batch
