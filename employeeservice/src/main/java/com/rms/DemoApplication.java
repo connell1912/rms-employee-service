@@ -21,13 +21,17 @@ public class DemoApplication {
 	@Bean
 	CommandLineRunner runner(EmployeeDao ed) {
 		return args -> {
-			Employee e = new Employee();
-			e.setFirstName("Thomas");
-			e.setLastName("Wayne");
-			e.setEmail("gotham@email.com");
-			e.setPassword("batdad777");
-			e.setRole(Role.BLDG_MNGR);
-			ed.save(e);
+			// Employee e = new Employee();
+			// e.setFirstName("Thomas");
+			// e.setLastName("Wayne");
+			// e.setEmail("gotham@email.com");
+			// e.setPassword("batdad777");
+			// e.setRole(Role.BLDG_MNGR);
+			// ed.save(e);
+			ed.save(new Employee("Joseph","Joestar","overdrive@email.com","verynice",Role.LOCKED));
+			ed.save(new Employee("Ceasar","Zeppeli","bubbles@email.com","wammuuuu",Role.TRAINER));
+			ed.save(new Employee("Lisa","Lisa","teacher@email.com","hamon",Role.TRNG_MNGR));
+			ed.save(new Employee("Robert","Speedwagon","narrator@email.com","thisbattle",Role.BLDG_MNGR));
 		};
 	}
 
