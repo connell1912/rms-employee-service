@@ -1,5 +1,8 @@
 package com.rms.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.rms.dao.EmployeeDao;
 import com.rms.model.Employee;
 
@@ -10,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @author Robert's batch
  *
  * 
- * Employee Service
+ *         Employee Service
  */
 @Service
 public class EmployeeService {
@@ -26,6 +29,13 @@ public class EmployeeService {
         ed.delete(emp);
     }
 
+    public List<Employee> findAll() {
+        return (List<Employee>) ed.findAll();
+    }
+
+    public Optional<Employee> findById(int id) {
+        return ed.findById(id);
+    }
 
 
 }

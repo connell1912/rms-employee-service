@@ -21,8 +21,7 @@ import javax.persistence.Table;
 public class Employee {
 
     @Id
-    @SequenceGenerator(name = "EmpID_seq", sequenceName = "EmpID_seq", initialValue = 1, allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EmpID_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int empId;
     private String firstName;
     private String lastName;
@@ -30,12 +29,12 @@ public class Employee {
     private String email;
     private String password;
     // private String title;
-    // @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private Department department;
 
     // private ResourceMetadata meta;
 
-    // @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private Role role;
 
 
