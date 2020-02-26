@@ -101,14 +101,6 @@ public class Employee {
         this.department = department;
     }
 
-    public ResourceMetadata getMeta() {
-        return this.meta;
-    }
-
-    public void setMeta(ResourceMetadata meta) {
-        this.meta = meta;
-    }
-
     public Role getRole() {
         return this.role;
     }
@@ -126,7 +118,6 @@ public class Employee {
             ", email='" + getEmail() + "'" +
             ", password='" + getPassword() + "'" +
             ", department='" + getDepartment() + "'" +
-            ", meta='" + getMeta() + "'" +
             ", role='" + getRole() + "'" +
             "}";
     }
@@ -139,12 +130,16 @@ public class Employee {
             return false;
         }
         Employee employee = (Employee) o;
-        return empId == employee.empId && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(email, employee.email) && Objects.equals(password, employee.password) && Objects.equals(department, employee.department) && Objects.equals(meta, employee.meta) && Objects.equals(role, employee.role);
+        return empId == employee.empId &&
+         Objects.equals(firstName, employee.firstName) &&
+          Objects.equals(lastName, employee.lastName) && Objects.equals(email, employee.email)
+           && Objects.equals(password, employee.password) && Objects.equals(department, employee.department) 
+           && Objects.equals(role, employee.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(empId, firstName, lastName, email, password, department, meta, role);
+        return Objects.hash(empId, firstName, lastName, email, password, department, role);
     }
 
 
