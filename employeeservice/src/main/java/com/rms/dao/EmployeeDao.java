@@ -1,14 +1,14 @@
 package com.rms.dao;
 
+import javax.transaction.Transactional;
+
+import com.rms.model.Employee;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
-
-import com.rms.model.*;
-
 @Repository
 @Transactional
-public interface EmployeeDao extends CrudRepository <Employee, Integer> {
+public interface EmployeeDao extends CrudRepository<Employee, Integer> {
     
 }
