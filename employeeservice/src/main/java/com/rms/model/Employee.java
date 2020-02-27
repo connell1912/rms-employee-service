@@ -30,7 +30,7 @@ public class Employee {
     private String email;
     private String password;
     // private String title;
-    @Convert(converter = deptConverter.class)
+    @Enumerated(EnumType.STRING)
     private Department department;
     @Enumerated(EnumType.STRING)
     private Role role;
