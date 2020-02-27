@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * EmployeeController
  */
 @RestController
+
 @RequestMapping(value = "/employee")
 public class EmployeeController {
 
@@ -47,6 +48,8 @@ public class EmployeeController {
     @GetMapping("/all")
 	public Iterable<Employee> getAll(){
 		return es.findAll();
-	}
+    }
+    
+    
     
 }

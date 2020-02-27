@@ -19,21 +19,21 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner runner(EmployeeDao ed) {
-		return args -> {
-			// Employee e = new Employee();
-			// e.setFirstName("Thomas");
-			// e.setLastName("Wayne");
-			// e.setEmail("gotham@email.com");
-			// e.setPassword("batdad777");
-			// e.setRole(Role.BLDG_MNGR);
-			// ed.save(e);
-		// 	ed.save(new Employee("Joseph","Joestar","overdriver@email.com","verynice",Department.STAGING,Role.BLDG_MNGR));
-		// 	ed.save(new Employee("Ceasar","Zeppeli","bubble@email.com","wammuuuu",Department.TRAINING,Role.TRAINER));
-		// 	ed.save(new Employee("Lisa","Lisa","teach@email.com","hamon",Department.QC,Role.TRNG_MNGR));
-			ed.save(new Employee("dfty","24356","narte@email.com","fghg",Department.QC,Role.LOCKED));
-		};
-	}
+	// @Bean
+	// CommandLineRunner runner(EmployeeDao ed) {
+	// 	return args -> {
+	// 		// Employee e = new Employee();
+	// 		// e.setFirstName("Thomas");
+	// 		// e.setLastName("Wayne");
+	// 		// e.setEmail("gotham@email.com");
+	// 		// e.setPassword("batdad777");
+	// 		// e.setRole(Role.BLDG_MNGR);
+	// 		// ed.save(e);
+	// 	// 	ed.save(new Employee("Joseph","Joestar","overdriver@email.com","verynice",Department.STAGING,Role.BLDG_MNGR));
+	// 	// 	ed.save(new Employee("Ceasar","Zeppeli","bubble@email.com","wammuuuu",Department.TRAINING,Role.TRAINER));
+	// 	// 	ed.save(new Employee("Lisa","Lisa","teach@email.com","hamon",Department.QC,Role.TRNG_MNGR));
+	// 		ed.save(new Employee("dfty","24356","nartesdf@email.com","fghg",Department.QC,Role.LOCKED));
+	// 	};
+	// }
 
 }
