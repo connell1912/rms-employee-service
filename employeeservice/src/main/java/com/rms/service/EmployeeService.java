@@ -33,8 +33,9 @@ public class EmployeeService {
         ed.save(emp);
     }
 
-    public void delete(Employee emp) {
+    public Employee delete(Employee emp) {
         ed.delete(emp);
+        return emp;
     }
 
     public List<Employee> findAll() {

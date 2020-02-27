@@ -5,29 +5,23 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
-import com.rms.dao.EmployeeDao;
 import com.rms.model.Department;
 import com.rms.model.Employee;
 import com.rms.model.Role;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@SpringBootTest
 public class EmployeeServiceTest {
 
     @Autowired
     private EmployeeService ed;
 
-    @Autowired
-    private TestEntityManager tem;
     
 
     @Test
@@ -39,7 +33,7 @@ public class EmployeeServiceTest {
     public void saveTest() {
         ed.save
         (new
-         Employee("firstName", "lastName", "someemail***", "password", 
+         Employee(4,"firstName", "lastName", "someemail", "password", 
          Department.RETENTION, Role.TRNG_MNGR));
         System.out.println("****************Test**************** \n"+ed.findById(1));
         assertTrue(ed.findById(1) != null);
@@ -47,9 +41,9 @@ public class EmployeeServiceTest {
 
     @Test
     public void findByIdTest() {
-        ed.save
-        (new Employee("firstName", "lastName", "someil***", "paswword", Department.RETENTION, Role.TRNG_MNGR));
-        Employee emp = ed.findById(2).get();
+        // ed.save
+        // (new Employee("firstName", "lastName", "someil***", "paswword", Department.RETENTION, Role.TRNG_MNGR));
+        Employee emp = ed.findById(1).get();
         System.out.println("***********\n"+emp);
         assertNotNull(emp);
     }
@@ -64,8 +58,11 @@ public class EmployeeServiceTest {
         ed.save(emp);
     }
 
+    @Test
     public void deleteTest() {
-        
+        Employee emp = new Employee("Kira", "Kira", "killaQueen@jojo.ora", "password", Department.HR, Role.TRAINER);
+        ed.save(emp);
+        assertTrue(ed.delete(emp) != null);
     }
 
     @Test
