@@ -21,7 +21,7 @@ public class EmployeeService {
     @Autowired
     EmployeeDao ed;
 
-    public Optional<Employee> findById(int id) {
+    public Employee findById(int id) {
         return ed.findById(id);
     }
 
