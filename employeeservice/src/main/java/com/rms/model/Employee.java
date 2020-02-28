@@ -1,28 +1,74 @@
-package com.revychan.model;
+package com.rms.model;
+
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.persistence.Convert;
 
 /**
- * Employee
+ * An employee
  */
+
+@Entity
+@Table
 public class Employee {
 
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int empId;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
     private String email;
-    private String title;
+    private String password;
+    // private String title;
+    @Enumerated(EnumType.STRING)
     private Department department;
-    private ResourceMetadata rmd;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    public int getId() {
-        return id;
+    public Employee() {
+        super();
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Employee(String firstName, String lastName, String email, String password, Department dpt, Role role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.department = dpt;
+        this.role = role;
+    }
+
+    public Employee(int id, String firstName, String lastName, String email, String password, Department dpt,
+            Role role) {
+        this.empId = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.department = dpt;
+        this.role = role;
+    }
+
+    public int getEmpId() {
+        return this.empId;
+    }
+
+    public void setEmpId(int empId) {
+        this.empId = empId;
     }
 
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -30,7 +76,7 @@ public class Employee {
     }
 
     public String getLastName() {
-        return lastName;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
@@ -38,217 +84,61 @@ public class Employee {
     }
 
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getTitle() {
-        return title;
+    public String getPassword() {
+        return this.password;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Department getDepartment() {
-        return department;
+        return this.department;
     }
 
     public void setDepartment(Department department) {
         this.department = department;
     }
 
-    public ResourceMetadata getRmd() {
-        return rmd;
+    public Role getRole() {
+        return this.role;
     }
 
-    public void setRmd(ResourceMetadata rmd) {
-        this.rmd = rmd;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee [department=" + department + ", email=" + email + ", firstName=" + firstName + ", id=" + id
-                + ", lastName=" + lastName + ", rmd=" + rmd + ", title=" + title + "]";
-    }
-
-    public Employee(int id, String firstName, String lastName, String email, String title, Department department,
-            ResourceMetadata rmd) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.title = title;
-        this.department = department;
-        this.rmd = rmd;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((department == null) ? 0 : department.hashCode());
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-        result = prime * result + id;
-        result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
-        result = prime * result + ((rmd == null) ? 0 : rmd.hashCode());
-        result = prime * result + ((title == null) ? 0 : title.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Employee other = (Employee) obj;
-        if (department != other.department)
-            return false;
-        if (email == null) {
-            if (other.email != null)
-                return false;
-        } else if (!email.equals(other.email))
-            return false;
-        if (firstName == null) {
-            if (other.firstName != null)
-                return false;
-        } else if (!firstName.equals(other.firstName))
-            return false;
-        if (id != other.id)
-            return false;
-        if (lastName == null) {
-            if (other.lastName != null)
-                return false;
-        } else if (!lastName.equals(other.lastName))
-            return false;
-        if (rmd == null) {
-            if (other.rmd != null)
-                return false;
-        } else if (!rmd.equals(other.rmd))
-            return false;
-        if (title == null) {
-            if (other.title != null)
-                return false;
-        } else if (!title.equals(other.title))
-            return false;
-        return true;
-    }
-}
-
-enum Department {
-
-    TRAINING(1), STAGING(2), QC(3), RETENTINON(4), HR(5);
-
-	private final int type;
-
-	private Department(int type){this.type = type;}
-
-	public int getValue() {
-		return type;
-	}
-}
-
-class ResourceMetadata {
-    private int resourceCreator;
-    private String resourceCreationDate;
-    private String lastModifier;
-    private String lastModifiedDateTime;
-    private int resourceOwner;
-
-    public int getResourceCreator() {
-        return resourceCreator;
-    }
-
-    public void setResourceCreator(int resourceCreator) {
-        this.resourceCreator = resourceCreator;
-    }
-
-    public String getResourceCreationDate() {
-        return resourceCreationDate;
-    }
-
-    public void setResourceCreationDate(String resourceCreationDate) {
-        this.resourceCreationDate = resourceCreationDate;
-    }
-
-    public String getLastModifier() {
-        return lastModifier;
-    }
-
-    public void setLastModifier(String lastModifier) {
-        this.lastModifier = lastModifier;
-    }
-
-    public String getLastModifiedDateTime() {
-        return lastModifiedDateTime;
-    }
-
-    public void setLastModifiedDateTime(String lastModifiedDateTime) {
-        this.lastModifiedDateTime = lastModifiedDateTime;
-    }
-
-    public int getResourceOwner() {
-        return resourceOwner;
-    }
-
-    public void setResourceOwner(int resourceOwner) {
-        this.resourceOwner = resourceOwner;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((lastModifiedDateTime == null) ? 0 : lastModifiedDateTime.hashCode());
-        result = prime * result + ((lastModifier == null) ? 0 : lastModifier.hashCode());
-        result = prime * result + ((resourceCreationDate == null) ? 0 : resourceCreationDate.hashCode());
-        result = prime * result + resourceCreator;
-        result = prime * result + resourceOwner;
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ResourceMetadata other = (ResourceMetadata) obj;
-        if (lastModifiedDateTime == null) {
-            if (other.lastModifiedDateTime != null)
-                return false;
-        } else if (!lastModifiedDateTime.equals(other.lastModifiedDateTime))
-            return false;
-        if (lastModifier == null) {
-            if (other.lastModifier != null)
-                return false;
-        } else if (!lastModifier.equals(other.lastModifier))
-            return false;
-        if (resourceCreationDate == null) {
-            if (other.resourceCreationDate != null)
-                return false;
-        } else if (!resourceCreationDate.equals(other.resourceCreationDate))
-            return false;
-        if (resourceCreator != other.resourceCreator)
-            return false;
-        if (resourceOwner != other.resourceOwner)
-            return false;
-        return true;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "ResourceMetadata [lastModifiedDateTime=" + lastModifiedDateTime + ", lastModifier=" + lastModifier
-                + ", resourceCreationDate=" + resourceCreationDate + ", resourceCreator=" + resourceCreator
-                + ", resourceOwner=" + resourceOwner + "]";
+        return "{" + " empId='" + getEmpId() + "'" + ", firstName='" + getFirstName() + "'" + ", lastName='"
+                + getLastName() + "'" + ", email='" + getEmail() + "'" + ", password='" + getPassword() + "'"
+                + ", department='" + getDepartment() + "'" + ", role='" + getRole() + "'" + "}";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Employee)) {
+            return false;
+        }
+        Employee employee = (Employee) o;
+        return empId == employee.empId && Objects.equals(firstName, employee.firstName)
+                && Objects.equals(lastName, employee.lastName) && Objects.equals(email, employee.email)
+                && Objects.equals(password, employee.password) && Objects.equals(department, employee.department)
+                && Objects.equals(role, employee.role);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(empId, firstName, lastName, email, password, department, role);
+    }
+
 }
