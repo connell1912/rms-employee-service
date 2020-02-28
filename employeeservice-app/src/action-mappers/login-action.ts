@@ -8,8 +8,10 @@ export const loginTypes = {
 }
 
 
-export const updateCurrentUser = (email:string, password:string, logout:boolean) => async (dispatch:any) => {
-    if(logout === true){
+export const updateCurrentUser = (email:string, password:string
+    /* ,logout: boolean */
+    ) => async (dispatch:any) => {
+    /* if(logout === true){
         dispatch({
             type:loginTypes.LOGOUT,
             payload:{
@@ -17,7 +19,7 @@ export const updateCurrentUser = (email:string, password:string, logout:boolean)
             }
         })
         return;
-    }
+    } */
     let response:any = await apiLogin(email, password)
     console.log(response);
     if(response.body){

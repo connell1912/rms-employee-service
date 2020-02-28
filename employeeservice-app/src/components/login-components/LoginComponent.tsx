@@ -1,5 +1,7 @@
 import React, { SyntheticEvent } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { Form, Input, Button } from "reactstrap";
+import { throws } from "assert";
 
 interface ILoginState {
   email: string;
@@ -7,12 +9,12 @@ interface ILoginState {
 }
 
 interface ILoginProps {
-  currentUser: any;
+ /*  currentUser: any; */
   updateCurrentUser: (e: string, p: string) => void;
   loginMessage: string;
 }
 
-export class LoginComponent extends React.Component<any, ILoginState> {
+export class LoginComponent extends React.Component<ILoginProps, ILoginState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -35,37 +37,42 @@ export class LoginComponent extends React.Component<any, ILoginState> {
     });
   };
 
-  submitLogin = async (event: SyntheticEvent) => {
+  /* submitLogin = async (event: SyntheticEvent) => {
     event.preventDefault();
     await this.props.updateCurrentUser(
       this.state.email,
-      this.state.password,
-      false
-    );
-    console.log(this.props.currentUser);
+      this.state.password
+      /* false */
+    /* ); */
+    /* console.log(this.props.currentUser);
     if (this.props.currentUser === null) {
       console.log("You are not a user");
     } else {
       if (this.props.currentUser["role"] === "ADMIN") {
         console.log("Admin");
         this.props.history.push("/admin");
-      } else if (this.props.currentUser["role"] !== "VENDOR") {
+      } else if (this.props.currentUser["role"] !== "ADMIN") {
         console.log("employee");
         this.props.history.push("/employee");
       }
-    }
-  };
+    } */
+  /* }; */
+
+  submitLogin = async (event: SyntheticEvent) => {
+    event.preventDefault();
+    this.props.updateCurrentUser(this.state.email, this.state.password);
+  }
 
   render() {
     return (
-      <div id="login-body">
+      /* {<div id="login-body">
         <div className="login">
           <div>
             <h1>Login</h1>
             Email:
             <input
               type="text"
-              placeholder="jdoe"
+              placeholder="email@email.com"
               className="txtb"
               onChange={this.updateEmail}
             />
@@ -87,6 +94,26 @@ export class LoginComponent extends React.Component<any, ILoginState> {
             </Link>
           </div>
         </div>
+      </div>} */
+      <div>
+        <Form onSubmit = {this.submitLogin}>
+          <Input 
+            required
+              type="email"
+              placeholder="email@email.com"
+              value={this.state.email}
+              onChange={this.updateEmail}
+              />
+          <Input 
+            required
+              type="password"
+              placeholder="secret"
+              value={this.state.password}
+              onChange={this.updatePassword}
+              />
+          <Button id="login">Login</Button>
+        </Form>
+        <p>{this.props.loginMessage}</p>
       </div>
     );
   }

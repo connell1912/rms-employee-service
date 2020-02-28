@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { axiosconfig } from '../remote/axiosconfig';
 
 
-export const apiLogin = async (email: string, password: string): Promise<object> => {
+export const apiLogin = async (email: string, password: string) => {
     try {
-        const response = await axios.post('http://localhost:8080/employee/auth', {
-            "email": email,
-            "password": password
+        const response = await axiosconfig.post('employee/auth', {
+            email,
+            password
         })
         if (response.status === 200) {
             const body = await response.data
@@ -16,7 +17,7 @@ export const apiLogin = async (email: string, password: string): Promise<object>
             }
         } else if (response.status === 401) {
             return {
-                loginMessage: "Incorrect Username or Password",
+                loginMessage: "Incorrect Email or Password",
                 body: null
             }
         } else {

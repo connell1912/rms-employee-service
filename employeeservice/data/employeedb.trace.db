@@ -829,3 +829,6 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/mar
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
 	... 95 more
+2020-02-28 10:56:30 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO EMPLOYEE VALUES ( 5, 'RETENTION', 'email@email.com', 'first', 'last', 'password', 'ROLE')EMPLOYEE[*]"; SQL statement:
+insert into employee values ( 5, 'RETENTION', 'email@email.com', 'first', 'last', 'password', 'ROLE')EMPLOYEE [42000-200]
