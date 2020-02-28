@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { axiosconfig } from '../remote/axiosconfig';
 
-
 export const apiLogin = async (email: string, password: string) => {
     try {
         const response = await axiosconfig.post('employee/auth', {
@@ -30,7 +29,6 @@ export const apiLogin = async (email: string, password: string) => {
         console.log(e);
         return {
             loginMessage: "Something Went Wrong",
-
         }
     }
 }
