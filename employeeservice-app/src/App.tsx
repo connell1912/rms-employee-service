@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from './Store';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { RegisterComponent } from './components/register-component/RegisterComponent';
-import { LoginComponent } from './components/login-components/LoginComponent';
+import LoginComponent from './components/login-components/LoginContainer';
 
 const App: React.FC = () => {
   return (

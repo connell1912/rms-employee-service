@@ -29,34 +29,35 @@ public class Employee {
     @Column(unique = true)
     private String email;
     private String password;
-    // private String title;
-    @Enumerated(EnumType.STRING)
-    private Department department;
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    // // private String title;
+    // @Enumerated(EnumType.STRING)
+    // private Department department;
+    // @Enumerated(EnumType.STRING)
+    // private Role role;
 
 
     public Employee() {
         super();
     }
     
-    public Employee(String firstName , String lastName , String email , String password , Department dpt, Role role) {
+    public Employee(String firstName , String lastName , String email , String password ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.department = dpt;
-        this.role = role;
+
+        // this.department = dpt;
+        // this.role = role;
     }
 
-    public Employee(int id, String firstName , String lastName , String email , String password , Department dpt, Role role) {
+    public Employee(int id, String firstName , String lastName , String email , String password ) {
         this.empId = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.department = dpt;
-        this.role = role;
+    //     this.department = dpt;
+    //     this.role = role;
     }
 
     public int getEmpId() {
@@ -99,21 +100,22 @@ public class Employee {
         this.password = password;
     }
 
-    public Department getDepartment() {
-        return this.department;
-    }
+    // public Department getDepartment() {
+    //     return this.department;
+    // }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
+    // public void setDepartment(Department department) {
+    //     this.department = department;
+    // }
 
-    public Role getRole() {
-        return this.role;
-    }
+    // public Role getRole() {
+    //     return this.role;
+    // }
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+    // public void setRole(Role role) {
+    //     this.role = role;
+    // }
+
 
     @Override
     public String toString() {
@@ -123,10 +125,9 @@ public class Employee {
             ", lastName='" + getLastName() + "'" +
             ", email='" + getEmail() + "'" +
             ", password='" + getPassword() + "'" +
-            ", department='" + getDepartment() + "'" +
-            ", role='" + getRole() + "'" +
             "}";
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -136,16 +137,12 @@ public class Employee {
             return false;
         }
         Employee employee = (Employee) o;
-        return empId == employee.empId &&
-         Objects.equals(firstName, employee.firstName) &&
-          Objects.equals(lastName, employee.lastName) && Objects.equals(email, employee.email)
-           && Objects.equals(password, employee.password) && Objects.equals(department, employee.department) 
-           && Objects.equals(role, employee.role);
+        return empId == employee.empId && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(email, employee.email) && Objects.equals(password, employee.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(empId, firstName, lastName, email, password, department, role);
-    }
+        return Objects.hash(empId, firstName, lastName, email, password);
+    }    
 
 }
