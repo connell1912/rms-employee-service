@@ -11,7 +11,7 @@ export const apiRegister = async (password: string, firstName: string, lastName:
         department
     }
     try {
-        const response = await axios.post('http://localhost:8080/nice-festival/register/new-user', {
+        const response = await axios.post('http://localhost:8080/employee/save', {
             "password": password,
             "firstName": firstName,
             "lastName": lastName,
@@ -24,18 +24,14 @@ export const apiRegister = async (password: string, firstName: string, lastName:
             if (body["role"] === "ADMIN") {
                 try {
                     const response2 = await axios.post('http://localhost:8080/employee/register/customer', {
-                        "address": "null",
-                        "city": "null",
-                        "state": "null",
-                        "user": {
                             "id": body["id"],
-                            "username": body["username"],
                             "password": body["password"],
                             "firstName": body["firstName"],
                             "lastName": body["lastName"],
                             "email": body["email"],
-                            "role": body["role"]
-                        }
+                            "role": body["role"],
+                            "department": body["department"]
+                    
                     });
                     if(response2.status === 200){
                         console.log("Customer created Successfully!");
