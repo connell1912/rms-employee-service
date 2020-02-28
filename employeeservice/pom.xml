@@ -15,6 +15,10 @@
   <properties>
     <java.version>1.8</java.version>
     <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+    <sonar.projectKey>connell1912_rms-employee-service</sonar.projectKey>
+    <sonar.organization>connell1912</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io/</sonar.host.url>
+    <sonar.login>73c6d6913e2039647e82df28ae00b5ec2afa2e76</sonar.login>
   </properties>
   <dependencies>
     <dependency>
