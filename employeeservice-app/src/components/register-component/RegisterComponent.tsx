@@ -26,6 +26,7 @@ export class RegisterComponent extends React.Component<any, IRegisterState> {
       role: "",
       department: ""
     };
+    
   }
 
   updateEmail = (event: any) => {
