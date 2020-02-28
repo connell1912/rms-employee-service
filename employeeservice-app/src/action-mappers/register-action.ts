@@ -1,6 +1,4 @@
-import { apiRegister } from "../remote/register"
-
-
+import { apiRegister } from "../remote/register";
 
 export const registerTypes = {
     SUCCESSFUL_REGISTRATION: 'REGISTRATION_SUCCESSFUL_REGISTRATION',

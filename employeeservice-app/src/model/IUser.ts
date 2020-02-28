@@ -1,4 +1,5 @@
 export interface IUser {
+
     empId: number,
     firstName: string,
     lastName: string,
@@ -7,4 +8,5 @@ export interface IUser {
    /*  ,
     department: any,
     role: any */
+    
 }
