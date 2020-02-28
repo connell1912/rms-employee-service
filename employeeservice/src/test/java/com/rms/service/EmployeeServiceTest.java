@@ -22,8 +22,6 @@ public class EmployeeServiceTest {
     @Autowired
     private EmployeeService ed;
 
-    
-
     @Test
     public void testEmployeeService() {
         assertTrue(ed != null);
@@ -43,7 +41,7 @@ public class EmployeeServiceTest {
     public void findByIdTest() {
         // ed.save
         // (new Employee("firstName", "lastName", "someil***", "paswword", Department.RETENTION, Role.TRNG_MNGR));
-        Employee emp = ed.findById(1).get();
+        Employee emp = ed.findById(1);
         System.out.println("***********\n"+emp);
         assertNotNull(emp);
     }
@@ -52,7 +50,7 @@ public class EmployeeServiceTest {
     public void updateTest() {
 
         System.out.println("*********************update\n");
-        Employee emp = ed.findById(1).get();
+        Employee emp = ed.findById(1);
         System.out.println(emp);
         emp.setFirstName("updatedTest");
         ed.save(emp);
