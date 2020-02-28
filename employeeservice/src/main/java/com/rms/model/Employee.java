@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -42,8 +41,7 @@ public class Employee {
     private Department department;
     @Enumerated(EnumType.STRING)
     private Role role;
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "empId")
+    @OneToOne
     private ResourceMetadata rmd;
 
     public Employee(String firstName, String lastName, String email, String password, Department department,
@@ -76,16 +74,6 @@ public class Employee {
         this.password = password;
         this.department = department;
         this.role = role;
-    }
-
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "resourceId")
-    public ResourceMetadata getRmd() {
-        return this.rmd;
-    }
-
-    public void setRmd(ResourceMetadata rmd) {
-        this.rmd = rmd;
     }
 
 }
