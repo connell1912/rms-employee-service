@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * EmployeeController
  */
 @RestController
+
 @RequestMapping(value = "/employee")
 public class EmployeeController {
 
@@ -25,7 +26,7 @@ public class EmployeeController {
     private EmployeeService es;
 
     @GetMapping(value = "/{id}")
-    public Optional<Employee> getById(@PathVariable("id") int id) {
+    public Employee getById(@PathVariable("id") int id) {
         return es.findById(id);
     }
 
@@ -47,6 +48,8 @@ public class EmployeeController {
     @GetMapping("/all")
 	public Iterable<Employee> getAll(){
 		return es.findAll();
-	}
+    }
+    
+    
     
 }
