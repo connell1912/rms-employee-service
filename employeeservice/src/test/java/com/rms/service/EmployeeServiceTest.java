@@ -22,8 +22,6 @@ public class EmployeeServiceTest {
     @Autowired
     private EmployeeService ed;
 
-    
-
     @Test
     public void testEmployeeService() {
         assertTrue(ed != null);
