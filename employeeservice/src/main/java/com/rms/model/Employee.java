@@ -139,6 +139,9 @@ public class Employee {
     @Override
     public int hashCode() {
         return Objects.hash(empId, firstName, lastName, email, password, department, role);
+        
     }
+
+    
 
 }
