@@ -43,8 +43,7 @@ public class MockEmployeeServiceTest {
 
     @Test
     public void getEmployeeByIdTest() {
-        when(ed.findById(1)).thenReturn(new Employee("Giorno", "Zeppeli", "golden@email.com", "requiemExperience",
-                Department.QC, Role.TRAINER));
+        when(ed.findById(1)).thenReturn(new Employee("Giorno", "Zeppeli", "golden@email.com", "requiemExperience", Department.QC, Role.TRAINER));
         Employee emp = es.findById(1);
         assertEquals("Giorno", emp.getFirstName());
         assertEquals("Zeppeli", emp.getLastName());

@@ -1,5 +1,7 @@
 package com.rms.model;
 
+import java.util.Objects;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -76,8 +78,6 @@ public class Employee {
         this.role = role;
     }
 
-<<<<<<< HEAD
-=======
     @Override
     public String toString() {
         return "{" + " empId='" + getEmpId() + "'" + ", firstName='" + getFirstName() + "'" + ", lastName='"
@@ -107,5 +107,4 @@ public class Employee {
 
     
 
->>>>>>> 3dbac418e7e09a66e08079629d1d786785bcd659
 }
