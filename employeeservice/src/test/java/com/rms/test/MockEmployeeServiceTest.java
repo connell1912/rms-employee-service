@@ -1,6 +1,7 @@
-package com.rms.service;
+package com.rms.test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -13,6 +14,7 @@ import com.rms.dao.EmployeeDao;
 import com.rms.model.Department;
 import com.rms.model.Employee;
 import com.rms.model.Role;
+import com.rms.service.EmployeeService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -82,6 +84,12 @@ public class MockEmployeeServiceTest {
         es.delete(emp2);
         Employee emp3 = es.findById(1);
         assertFalse(emp3 != null);
+    }
+
+    @Test
+    public void testConstructor() {
+        Employee em = new Employee("tester", "test", "test@email.test", "password", Department.QC, Role.BLDG_MNGR);
+        assertTrue(em.equals(new Employee("tester", "test", "test@email.test", "password", Department.QC, Role.BLDG_MNGR)) );
     }
 
 }

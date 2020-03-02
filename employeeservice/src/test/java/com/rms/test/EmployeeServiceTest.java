@@ -1,4 +1,4 @@
-package com.rms.service;
+package com.rms.test;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -8,6 +8,7 @@ import java.util.List;
 import com.rms.model.Department;
 import com.rms.model.Employee;
 import com.rms.model.Role;
+import com.rms.service.EmployeeService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
