@@ -1,4 +1,4 @@
-package com.rms.test;
+package com.rms.service;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
