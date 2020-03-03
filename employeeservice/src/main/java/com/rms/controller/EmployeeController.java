@@ -43,7 +43,7 @@ public class EmployeeController {
     @DeleteMapping("/employee")
 	public void delete(@RequestBody Employee emp) {
 		es.delete(emp);
-    }
+    } 
 
     @PostMapping("/old")
 	public void update(@RequestBody Employee emp) {

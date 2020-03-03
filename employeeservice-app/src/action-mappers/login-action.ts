@@ -1,12 +1,10 @@
 import { apiLogin } from "../remote/login"
 
-
 export const loginTypes = {
     SUCCESSFUL_LOGIN: 'LOGIN_SUCCESSFUL_LOGIN',
     UNSUCCESSFUL_LOGIN: 'LOGIN_UNSUCCESSFUL_LOGIN',
     LOGOUT: 'LOGOUT'
 }
-
 
 export const updateCurrentUser = (email:string, password:string
     /* ,logout: boolean */
@@ -39,6 +37,5 @@ export const updateCurrentUser = (email:string, password:string
         })
 
     }
-
 
 }

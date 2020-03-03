@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export const apiRegister = async (password: string, firstName: string, lastName: string, email: string, role: string, department: string): Promise<object> => {
     let user = {
         password,
