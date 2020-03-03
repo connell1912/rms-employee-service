@@ -76,36 +76,4 @@ public class Employee {
         this.role = role;
     }
 
-<<<<<<< HEAD
-    @Override
-    public String toString() {
-        return "{" + " empId='" + getEmpId() + "'" + ", firstName='" + getFirstName() + "'" + ", lastName='"
-                + getLastName() + "'" + ", email='" + getEmail() + "'" + ", password='" + getPassword() + "'"
-                + ", department='" + getDepartment() + "'" + ", role='" + getRole() + "'" + "}";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Employee)) {
-            return false;
-        }
-        Employee employee = (Employee) o;
-        return empId == employee.empId && Objects.equals(firstName, employee.firstName)
-                && Objects.equals(lastName, employee.lastName) && Objects.equals(email, employee.email)
-                && Objects.equals(password, employee.password) && Objects.equals(department, employee.department)
-                && Objects.equals(role, employee.role);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(empId, firstName, lastName, email, password, department, role);
-        
-    }
-
-    
-
-=======
->>>>>>> 58f18b2a1c96cf210f2157bf40f7719a3cce636f
 }
