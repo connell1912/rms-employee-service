@@ -8,6 +8,7 @@ import java.util.List;
 import com.rms.model.Department;
 import com.rms.model.Employee;
 import com.rms.model.Role;
+import com.rms.service.EmployeeService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +22,6 @@ public class EmployeeServiceTest {
 
     @Autowired
     private EmployeeService ed;
-
-    
 
     @Test
     public void testEmployeeService() {
@@ -43,7 +42,7 @@ public class EmployeeServiceTest {
     public void findByIdTest() {
         // ed.save
         // (new Employee("firstName", "lastName", "someil***", "paswword", Department.RETENTION, Role.TRNG_MNGR));
-        Employee emp = ed.findById(1).get();
+        Employee emp = ed.findById(1);
         System.out.println("***********\n"+emp);
         assertNotNull(emp);
     }
@@ -52,7 +51,7 @@ public class EmployeeServiceTest {
     public void updateTest() {
 
         System.out.println("*********************update\n");
-        Employee emp = ed.findById(1).get();
+        Employee emp = ed.findById(1);
         System.out.println(emp);
         emp.setFirstName("updatedTest");
         ed.save(emp);

@@ -1,15 +1,15 @@
 import { apiLogin } from "../remote/login"
 
-
 export const loginTypes = {
     SUCCESSFUL_LOGIN: 'LOGIN_SUCCESSFUL_LOGIN',
     UNSUCCESSFUL_LOGIN: 'LOGIN_UNSUCCESSFUL_LOGIN',
     LOGOUT: 'LOGOUT'
 }
 
-
-export const updateCurrentUser = (email:string, password:string, logout:boolean) => async (dispatch:any) => {
-    if(logout === true){
+export const updateCurrentUser = (email:string, password:string
+    /* ,logout: boolean */
+    ) => async (dispatch:any) => {
+    /* if(logout === true){
         dispatch({
             type:loginTypes.LOGOUT,
             payload:{
@@ -17,7 +17,7 @@ export const updateCurrentUser = (email:string, password:string, logout:boolean)
             }
         })
         return;
-    }
+    } */
     let response:any = await apiLogin(email, password)
     console.log(response);
     if(response.body){
@@ -37,6 +37,5 @@ export const updateCurrentUser = (email:string, password:string, logout:boolean)
         })
 
     }
-
 
 }

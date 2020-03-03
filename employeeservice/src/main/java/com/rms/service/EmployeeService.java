@@ -31,7 +31,7 @@ public class EmployeeService {
 
     public void update(Employee emp) {
         ed.save(emp);
-    }
+    } 
 
     public Employee delete(Employee emp) {
         ed.delete(emp);
@@ -42,6 +42,12 @@ public class EmployeeService {
         return (List<Employee>) ed.findAll();
     }
 
-    
+	public Employee authenticate(Employee emp) {
+        Optional<Employee> dbu = Optional.ofNullable(ed.findByEmail(emp.getEmail()));
+        if(dbu.isPresent()){
+            return (emp.getPassword().equals(dbu.get().getPassword())) ? dbu.get() : null;
+        }
+        return null;
+    }
 
 }
