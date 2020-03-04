@@ -22,7 +22,7 @@ public class EmployeeService {
     EmployeeDao ed;
 
     public Employee findById(int id) {
-        return ed.findById(id);
+        return ed.findById(id).orElse(new Employee());
     }
 
     public void save(Employee emp) {
