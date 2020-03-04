@@ -9,6 +9,7 @@ import com.rms.model.Department;
 import com.rms.model.Employee;
 import com.rms.model.Role;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class EmployeeServiceTest {
         Employee emp = ed.findById(1);
         System.out.println(emp);
         emp.setFirstName("updatedTest");
-        ed.save(emp);
+        ed.update(emp);
         assertTrue(ed.findById(1).getFirstName().equals("updatedTest"));
     }
 
@@ -70,6 +71,7 @@ public class EmployeeServiceTest {
         System.out.println("\n***********:\n"+ls);
         assertTrue(ls != null);
     }
+
 
 }
     

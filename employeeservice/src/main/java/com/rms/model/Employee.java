@@ -30,7 +30,6 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int empId;
     private String firstName;
-    @Setter
     private String lastName;
     @Column(unique = true)
     private String email;
@@ -61,13 +60,6 @@ public class Employee {
         this.department = department;
         this.role = role;
         this.rmd = rmd;
-    }
-
-    @Override
-    public String toString() {
-        return "{" + " empId='" + getEmpId() + "'" + ", firstName='" + getFirstName() + "'" + ", lastName='"
-                + getLastName() + "'" + ", email='" + getEmail() + "'" + ", password='" + getPassword() + "'"
-                + ", department='" + getDepartment() + "'" + ", role='" + getRole() + "'" + "}";
     }
     
 }

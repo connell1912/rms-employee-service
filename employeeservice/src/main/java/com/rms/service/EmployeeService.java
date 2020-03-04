@@ -41,13 +41,5 @@ public class EmployeeService {
     public List<Employee> findAll() {
         return (List<Employee>) ed.findAll();
     }
-
-	public Employee authenticate(Employee emp) {
-        Optional<Employee> dbu = Optional.ofNullable(ed.findByEmail(emp.getEmail()));
-        if(dbu.isPresent()){
-            return (emp.getPassword().equals(dbu.get().getPassword())) ? dbu.get() : null;
-        }
-        return null;
-    }
-
+    
 }
