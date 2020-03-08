@@ -1,6 +1,8 @@
 package com.rms.controller;
 
-import com.rms.model.Employee;
+import java.util.List;
+
+import com.rms.dto.EmployeeDto;
 import com.rms.service.EmployeeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,34 +25,26 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeService es;
-
     
-
-    @GetMapping(value = "/{id}")
-    public Employee getById(@PathVariable("id") int id) {
-        return es.findById(id);
-    }
-
-    @PostMapping
-	public void save(@RequestBody Employee emp) {
-		es.save(emp);
+    @GetMapping(value = "/{email}")
+    public EmployeeDto getByEmail(@PathVariable("email") String email) {
+        return es.findByEmail(email);
     }
     
-    @DeleteMapping("/employee")
-	public void delete(@RequestBody Employee emp) {
-		es.delete(emp);
+    @DeleteMapping(value = "/remove")
+	public EmployeeDto delete(@RequestBody EmployeeDto emp) {
+		return es.delete(emp);
     } 
 
-    @PostMapping("/old")
-	public void update(@RequestBody Employee emp) {
-		es.update(emp);
+    @PostMapping(value = "/save")
+	public EmployeeDto save(@RequestBody EmployeeDto emp) {
+        es.saveOrUpdate(emp);
+        return emp;
     }
     
-    @GetMapping("/all")
-	public Iterable<Employee> getAll(){
+    @GetMapping(value = "/all",produces = "application/json")
+	public List<EmployeeDto> getAll(){
 		return es.findAll();
     }
-    
-    
     
 }

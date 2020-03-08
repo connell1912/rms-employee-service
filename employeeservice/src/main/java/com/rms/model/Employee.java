@@ -1,5 +1,6 @@
 package com.rms.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,28 +39,29 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Department department;
     @Enumerated(EnumType.STRING)
-    private Role role;
-    @OneToOne
+    private Title title;
+    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "resourceId",referencedColumnName = "resourceId")
     private ResourceMetadata rmd;
 
     public Employee(String firstName, String lastName, String email, String password, Department department,
-            Role role) {
+            Title title) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.department = department;
-        this.role = role;
+        this.title = title;
     }
 
-    public Employee(String firstName, String lastName, String email, String password, Department department, Role role,
+    public Employee(String firstName, String lastName, String email, String password, Department department, Title title,
             ResourceMetadata rmd) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.department = department;
-        this.role = role;
+        this.title = title;
         this.rmd = rmd;
     }
     

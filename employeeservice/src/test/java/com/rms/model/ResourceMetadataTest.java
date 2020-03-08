@@ -24,6 +24,7 @@ public class ResourceMetadataTest {
         Configuration configuration = new ConfigurationBuilder()
         .ignoreProperty("resourceCreationDate")  
         .ignoreProperty("lastModifiedDateTime")
+        .ignoreProperty("resourceOwner")
         .iterations(1)
         .build();
         new BeanTester().testBean(ResourceMetadata.class,configuration);
@@ -36,11 +37,11 @@ public class ResourceMetadataTest {
         assertFalse(rm.equals(null));
         assertTrue(rm.equals(rm));
         rm.equals(rm);
-        ResourceMetadata r2 = new ResourceMetadata(1, 2, null, 34, null, 23);
+        ResourceMetadata r2 = new ResourceMetadata(1, 2, null, 34, null,null);
         rm.equals(new ResourceMetadata());
         rm.hashCode();
-        assertNotNull(new Employee("firstName", "lastName", "email", "password", Department.TRAINING, Role.TRAINER));
-        assertNotNull(new Employee("firstName", "lastName", "email", "password", Department.HR, Role.BLDG_MNGR, null));
+        assertNotNull(new Employee("firstName", "lastName", "email", "password", Department.TRAINING, Title.HR_LEAD));
+        assertNotNull(new Employee("firstName", "lastName", "email", "password", Department.HR, Title.TRAINING_LEAD, null));
     }
 }
     
