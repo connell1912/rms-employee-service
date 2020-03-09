@@ -1,6 +1,5 @@
 package com.rms.dao;
 
-import com.rms.dto.EmployeeDto;
 import com.rms.model.Employee;
 
 import org.springframework.data.repository.CrudRepository;

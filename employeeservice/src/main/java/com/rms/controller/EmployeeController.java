@@ -2,13 +2,9 @@ package com.rms.controller;
 
 import java.util.List;
 
-import com.rms.dto.EmployeeDto;
-import com.rms.facades.EmployeeData;
-import com.rms.facades.EmployeeLogin;
 import com.rms.model.Employee;
 import com.rms.service.EmployeeService;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,42 +26,33 @@ public class EmployeeController {
     @Autowired
     private EmployeeService es;
 
-    @Autowired
-    private ModelMapper modelMapper;
-
-    private EmployeeDto dto;
-
     @GetMapping(value = "/{email}")
-    public EmployeeData getByEmail(@PathVariable("email") String email) {
-        return dto.convertToDto(es.findByEmail(email));
+    public Employee getByEmail(@PathVariable("email") String email) {
+        return es.findByEmail(email);
     }
 
     @DeleteMapping(value = "/remove")
-    public EmployeeData delete(@RequestBody String email) {
-        return dto.convertToDto((Employee) es.deleteByEmail(email));
+    public Employee delete(@RequestBody String email) {
+        return es.deleteByEmail(email);
     }
 
     @PostMapping(value = "/save", consumes = "application/json")
-    public EmployeeData save(@RequestBody Employee emp) {
-        Employee e = es.saveOrUpdate(emp);
-        return dto.convertToDto(e);
+    public Employee save(@RequestBody Employee emp) {
+        return es.saveOrUpdate(emp);
     }
 
     @GetMapping(value = "/all", produces = "application/json")
-    public List<EmployeeData> getAll() {
-        List<EmployeeData> list = (List<EmployeeData>) es.findAll().stream().map(e -> dto.convertToDto(e));
-        return list;
+    public List<Employee> getAll() {
+        return es.findAll();
     }
 
     @PostMapping(value = "/login")
-    public EmployeeData login(@RequestBody EmployeeLogin el){
+    public Employee login(@RequestBody Employee el){
         boolean resp = es.login(el.getEmail(),el.getPassword());
-        EmployeeData edata = new EmployeeData();
         if(resp){
-            Employee e  = es.findByEmail(el.getEmail());
-            edata.addEmployee(e);
+            return es.findByEmail(el.getEmail());
         }
-        return edata;
+        return null;
     }
 
     
