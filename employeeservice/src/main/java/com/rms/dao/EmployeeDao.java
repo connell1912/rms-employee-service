@@ -14,6 +14,8 @@ public interface EmployeeDao extends CrudRepository<Employee, Integer> {
     
 
     Employee findByEmail(String email);
+
+	Employee deleteByEmail(String email);
     
 
  

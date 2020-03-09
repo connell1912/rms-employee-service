@@ -1,9 +1,10 @@
 package com.rms.controller;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 import com.rms.dto.EmployeeDto;
+import com.rms.facades.EmployeeData;
+import com.rms.facades.EmployeeLogin;
 import com.rms.model.Employee;
 import com.rms.service.EmployeeService;
 
@@ -32,34 +33,40 @@ public class EmployeeController {
     @Autowired
     private ModelMapper modelMapper;
 
+    private EmployeeDto dto;
+
     @GetMapping(value = "/{email}")
-    public EmployeeDto getByEmail(@PathVariable("email") String email) {
-        return convertToDto(es.findByEmail(email));
+    public EmployeeData getByEmail(@PathVariable("email") String email) {
+        return dto.convertToDto(es.findByEmail(email));
     }
 
     @DeleteMapping(value = "/remove")
-    public EmployeeDto delete(@RequestBody EmployeeDto emp) {
-        return convertToDto(es.delete(convertToEmployee(emp)));
+    public EmployeeData delete(@RequestBody String email) {
+        return dto.convertToDto((Employee) es.deleteByEmail(email));
     }
 
     @PostMapping(value = "/save", consumes = "application/json")
-    public Employee save(@RequestBody Employee emp) {
-        es.saveOrUpdate(emp);
-        return emp;
+    public EmployeeData save(@RequestBody Employee emp) {
+        Employee e = es.saveOrUpdate(emp);
+        return dto.convertToDto(e);
     }
 
     @GetMapping(value = "/all", produces = "application/json")
-    public Stream<EmployeeDto> getAll() {
-        return es.findAll().stream()
-        .map(this::convertToDto);
+    public List<EmployeeData> getAll() {
+        List<EmployeeData> list = (List<EmployeeData>) es.findAll().stream().map(e -> dto.convertToDto(e));
+        return list;
     }
 
-    private EmployeeDto convertToDto(Employee ed) {
-        EmployeeDto dto = new EmployeeDto(ed);
-        return dto;
+    @PostMapping(value = "/login")
+    public EmployeeData login(@RequestBody EmployeeLogin el){
+        boolean resp = es.login(el.getEmail(),el.getPassword());
+        EmployeeData edata = new EmployeeData();
+        if(resp){
+            Employee e  = es.findByEmail(el.getEmail());
+            edata.addEmployee(e);
+        }
+        return edata;
     }
 
-    private Employee convertToEmployee(EmployeeDto emd) {
-        return emd.getEmployee();
-    }
+    
 }
