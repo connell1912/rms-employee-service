@@ -40,7 +40,7 @@ public class EmployeeController {
 		es.save(emp);
     }
     
-    @DeleteMapping("/employee")
+    @DeleteMapping("/delete")
 	public void delete(@RequestBody Employee emp) {
 		es.delete(emp);
     } 
