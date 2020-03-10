@@ -39,9 +39,6 @@ public class Employee {
     private Department department;
     @Enumerated(EnumType.STRING)
     private Title title;
-    @OneToOne(cascade = CascadeType.ALL,orphanRemoval = true)
-    @JoinColumn(name = "resourceId",referencedColumnName = "resourceId")
-    private ResourceMetadata rmd;
 
     public Employee(String firstName, String lastName, String email, String password, Department department,
             Title title) {
@@ -53,15 +50,5 @@ public class Employee {
         this.title = title;
     }
 
-    public Employee(String firstName, String lastName, String email, String password, Department department, Title title,
-            ResourceMetadata rmd) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.department = department;
-        this.title = title;
-        this.rmd = rmd;
-    }
     
 }

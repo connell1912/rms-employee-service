@@ -11,9 +11,9 @@ public enum Department {
 			case "STAGING":
 				return Department.STAGING;
 			case "QC":
-				return Department.QC;
+			return Department.QC;
 			case "RETENTION":
-				return Department.RETENTION;
+			return Department.RETENTION;
 			case "HR":
 				return Department.HR;
 			default:
