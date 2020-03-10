@@ -35,7 +35,7 @@ public class EmployeeController {
         return es.findById(id);
     }
 
-    @PostMapping
+    @PostMapping(value="/new")
 	public void save(@RequestBody Employee emp) {
 		es.save(emp);
     }
