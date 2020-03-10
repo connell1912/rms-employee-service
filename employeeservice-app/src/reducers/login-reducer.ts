@@ -1,6 +1,5 @@
 import { IUserState } from ".";
 import { loginTypes } from "../action-mappers/login-action";
-import { IUser } from "../model/IUser";
 
 const initialState: IUserState = {
   currentUser: {
@@ -8,10 +7,9 @@ const initialState: IUserState = {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
-    // ,
-    // department: null,
-    // role: null
+    password: "",
+    department:0,
+    role:0
   },
   loginMessage: ""
 };
@@ -26,13 +24,13 @@ export const loginReducer = (state = initialState, action: any) => {
       };
     }
 
-  /*   case loginTypes.LOGOUT: {
+    /*   case loginTypes.LOGOUT: {
       return {
         ...state,
         currentUser: null
       };
     } */
-    
+
     case loginTypes.UNSUCCESSFUL_LOGIN: {
       return {
         ...state,

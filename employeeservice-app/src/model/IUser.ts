@@ -1,12 +1,12 @@
-export interface IUser {
+import { IRole } from "./IRole";
+import { IDepartment } from "./IDepartment";
 
-    empId: number,
-    firstName: string,
-    lastName: string,
-    email: string,
-    password: string
-   /*  ,
-    department: any,
-    role: any */
-    
+export interface IUser {
+  empId: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  department: IDepartment;
+  role: IRole;
 }
