@@ -1,13 +1,10 @@
 package com.rms.controller;
 
 import java.util.List;
-import java.util.stream.Stream;
 
-import com.rms.dto.EmployeeDto;
 import com.rms.model.Employee;
 import com.rms.service.EmployeeService;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,37 +26,34 @@ public class EmployeeController {
     @Autowired
     private EmployeeService es;
 
-    @Autowired
-    private ModelMapper modelMapper;
-
     @GetMapping(value = "/{email}")
-    public EmployeeDto getByEmail(@PathVariable("email") String email) {
-        return convertToDto(es.findByEmail(email));
+    public Employee getByEmail(@PathVariable("email") String email) {
+        return es.findByEmail(email);
     }
 
     @DeleteMapping(value = "/remove")
-    public EmployeeDto delete(@RequestBody EmployeeDto emp) {
-        return convertToDto(es.delete(convertToEmployee(emp)));
+    public Employee delete(@RequestBody String email) {
+        return es.deleteByEmail(email);
     }
 
     @PostMapping(value = "/save", consumes = "application/json")
     public Employee save(@RequestBody Employee emp) {
-        es.saveOrUpdate(emp);
-        return emp;
+        return es.saveOrUpdate(emp);
     }
 
     @GetMapping(value = "/all", produces = "application/json")
-    public Stream<EmployeeDto> getAll() {
-        return es.findAll().stream()
-        .map(this::convertToDto);
+    public List<Employee> getAll() {
+        return es.findAll();
     }
 
-    private EmployeeDto convertToDto(Employee ed) {
-        EmployeeDto dto = new EmployeeDto(ed);
-        return dto;
+    @PostMapping(value = "/login")
+    public Employee login(@RequestBody Employee el){
+        boolean resp = es.login(el.getEmail(),el.getPassword());
+        if(resp){
+            return es.findByEmail(el.getEmail());
+        }
+        return null;
     }
 
-    private Employee convertToEmployee(EmployeeDto emd) {
-        return emd.getEmployee();
-    }
+    
 }

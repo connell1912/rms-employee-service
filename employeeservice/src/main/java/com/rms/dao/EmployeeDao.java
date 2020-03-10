@@ -1,6 +1,5 @@
 package com.rms.dao;
 
-import com.rms.dto.EmployeeDto;
 import com.rms.model.Employee;
 
 import org.springframework.data.repository.CrudRepository;
@@ -14,6 +13,8 @@ public interface EmployeeDao extends CrudRepository<Employee, Integer> {
     
 
     Employee findByEmail(String email);
+
+	Employee deleteByEmail(String email);
     
 
  
