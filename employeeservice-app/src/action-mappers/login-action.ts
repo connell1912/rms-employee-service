@@ -1,5 +1,5 @@
 import { apiLogin } from "../remote/login"
-
+import {history} from "../history/history";
 export const loginTypes = {
     SUCCESSFUL_LOGIN: 'LOGIN_SUCCESSFUL_LOGIN',
     UNSUCCESSFUL_LOGIN: 'LOGIN_UNSUCCESSFUL_LOGIN',
@@ -27,6 +27,7 @@ export const updateCurrentUser = (email:string, password:string
                 currentUser:response.body
             }
         })
+        history.push("/addroom");
     }
     else {
         dispatch({

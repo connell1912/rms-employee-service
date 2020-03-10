@@ -10,7 +10,7 @@ export const apiRegister = async (password: string, firstName: string, lastName:
         department
     }
     try {
-        const response = await axios.post('http://localhost:8080/employee/save', {
+        const response = await axios.post('http://localhost:1234/employee/save', {
             "password": password,
             "firstName": firstName,
             "lastName": lastName,
@@ -22,7 +22,7 @@ export const apiRegister = async (password: string, firstName: string, lastName:
             const body = await response.data
             if (body["role"] === "ADMIN") {
                 try {
-                    const response2 = await axios.post('http://localhost:8080/employee/register/customer', {
+                    const response2 = await axios.post('http://localhost:1234/employee/register/customer', {
                             "id": body["id"],
                             "password": body["password"],
                             "firstName": body["firstName"],

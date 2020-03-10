@@ -83,11 +83,18 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
+<<<<<<< HEAD
       <groupId>org.meanbean</groupId>
       <artifactId>meanbean</artifactId>
       <version>2.0.3</version>
     </dependency>
 
+=======
+      <groupId>org.modelmapper</groupId>
+      <artifactId>modelmapper</artifactId>
+      <version>2.3.6</version>
+    </dependency>
+>>>>>>> f842ad8ff26c148a75873b4de47131ac17acc91a
   </dependencies>
   <dependencyManagement>
     <dependencies>
