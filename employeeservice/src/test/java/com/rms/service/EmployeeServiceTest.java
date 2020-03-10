@@ -7,8 +7,7 @@ import java.util.List;
 
 import com.rms.model.Department;
 import com.rms.model.Employee;
-import com.rms.model.Role;
-import com.rms.service.EmployeeService;
+import com.rms.model.Title;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,19 +29,18 @@ public class EmployeeServiceTest {
 
     @Test
     public void saveTest() {
-        ed.save
-        (new
-         Employee(4,"firstName", "lastName", "someemail", "password", 
-         Department.RETENTION, Role.TRNG_MNGR));
-        System.out.println("****************Test**************** \n"+ed.findById(1));
-        assertTrue(ed.findById(1) != null);
+        ed.saveOrUpdate(new Employee("firstName", "lastName", "someemail", "password", Department.RETENTION,
+                Title.TRAINING_MANAGER));
+        System.out.println("****************Test**************** \n" + ed.findByEmail("someemail"));
+        assertTrue(ed.findByEmail("someemail") != null);
     }
 
     @Test
     public void findByIdTest() {
         // ed.save
-        // (new Employee("firstName", "lastName", "someil***", "paswword", Department.RETENTION, Role.TRNG_MNGR));
-        Employee emp = ed.findById(1);
+        // (new Employee("firstName", "lastName", "someil***", "paswword",
+        // Department.RETENTION, Title.TRNG_MNGR));
+        Employee emp = ed.findByEmail("someemail");
         System.out.println("***********\n"+emp);
         assertNotNull(emp);
     }
@@ -51,16 +49,17 @@ public class EmployeeServiceTest {
     public void updateTest() {
 
         System.out.println("*********************update\n");
-        Employee emp = ed.findById(1);
+        Employee emp = ed.findByEmail("someemail");
         System.out.println(emp);
         emp.setFirstName("updatedTest");
-        ed.save(emp);
+        ed.saveOrUpdate(emp);
+        assertTrue(ed.findByEmail("someemail").getFirstName().equals("updatedTest"));
     }
 
     @Test
     public void deleteTest() {
-        Employee emp = new Employee("Kira", "Kira", "killaQueen@jojo.ora", "password", Department.HR, Role.TRAINER);
-        ed.save(emp);
+        Employee emp = new Employee("Kira", "Kira", "killaQueen@jojo.ora", "password", Department.HR, Title.HR_LEAD);
+        ed.saveOrUpdate(emp);
         assertTrue(ed.delete(emp) != null);
     }
 
@@ -70,6 +69,7 @@ public class EmployeeServiceTest {
         System.out.println("\n***********:\n"+ls);
         assertTrue(ls != null);
     }
+
 
 }
     

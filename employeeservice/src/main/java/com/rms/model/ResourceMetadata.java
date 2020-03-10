@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -35,15 +36,7 @@ public class ResourceMetadata {
     private int lastModifier;
     @CreationTimestamp
     private Timestamp lastModifiedDateTime;
-    private int resourceOwner;
-
-    public ResourceMetadata(int resourceCreator, Timestamp resourceCreationDate, int lastModifier,
-            Timestamp lastModifiedDateTime, int resourceOwner) {
-        this.resourceCreator = resourceCreator;
-        this.resourceCreationDate = resourceCreationDate;
-        this.lastModifier = lastModifier;
-        this.lastModifiedDateTime = lastModifiedDateTime;
-        this.resourceOwner = resourceOwner;
-    }
+    @OneToOne(mappedBy = "rmd")
+    private Employee resourceOwner;
 
 }
