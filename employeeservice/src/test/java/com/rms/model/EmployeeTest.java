@@ -28,14 +28,12 @@ public class EmployeeTest {
         .build();
         bt.testBean(Employee.class,configuration);
         Employee em = new Employee();
-        em.setRmd(new ResourceMetadata());
-        assertTrue(em.getRmd() != null);
         assertFalse(em.canEqual(null));
         assertTrue(em.canEqual(em));
         assertFalse(em.equals(null));
         assertTrue(em.equals(em));
-        Employee e1 = new Employee(1, "firstName", "lastName", "email", "password", Department.HR,Title.STAGING_MANAGER,null);
-        Employee e2 = new Employee(1, "firstName", "lastName", "email", "password", Department.HR,Title.STAGING_MANAGER,null);
+        Employee e1 = new Employee(1, "firstName", "lastName", "email", "password", Department.HR,Title.STAGING_MANAGER);
+        Employee e2 = new Employee(1, "firstName", "lastName", "email", "password", Department.HR,Title.STAGING_MANAGER);
         assertTrue(e1.equals(e2));
         assertTrue(em.hashCode() != 0);
 

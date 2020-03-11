@@ -36,5 +36,14 @@ public class EmployeeService {
     public List<Employee> findAll() {
         return (List<Employee>) ed.findAll();
     }
+
+	public boolean login(String email , String password) {
+        Employee emp = ed.findByEmail(email);
+        return (emp.getPassword().equals(password));
+	}
+
+	public Employee deleteByEmail(String email) {
+		return ed.deleteByEmail(email);
+	}
     
 }
