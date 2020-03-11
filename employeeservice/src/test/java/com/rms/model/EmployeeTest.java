@@ -1,23 +1,42 @@
 package com.rms.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
-
-
+import org.junit.Test;
+import org.meanbean.test.BeanTester;
+import org.meanbean.test.Configuration;
+import org.meanbean.test.ConfigurationBuilder;
+    
 public class EmployeeTest {
+
 
     @Before
     public void setup(){
-    
+        
     }
-
         
     @Test
-    public void testConstructor() {
-        Employee em = new Employee("tester", "test", "test@email.test", "password", Department.QC, Role.BLDG_MNGR);
-        assertTrue(em.equals(new Employee("tester", "test", "test@email.test", "password", Department.QC, Role.BLDG_MNGR)) );
+    public void testEmployee() {
+       
+        BeanTester bt = new BeanTester();
+        Configuration configuration = new ConfigurationBuilder()
+        .ignoreProperty("rmd")
+        .iterations(1)
+        .build();
+        bt.testBean(Employee.class,configuration);
+        Employee em = new Employee();
+        assertFalse(em.canEqual(null));
+        assertTrue(em.canEqual(em));
+        assertFalse(em.equals(null));
+        assertTrue(em.equals(em));
+        Employee e1 = new Employee(1, "firstName", "lastName", "email", "password", Department.HR,Title.STAGING_MANAGER);
+        Employee e2 = new Employee(1, "firstName", "lastName", "email", "password", Department.HR,Title.STAGING_MANAGER);
+        assertTrue(e1.equals(e2));
+        assertTrue(em.hashCode() != 0);
+
     }
 }
     

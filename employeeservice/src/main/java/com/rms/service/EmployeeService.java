@@ -1,7 +1,6 @@
 package com.rms.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.rms.dao.EmployeeDao;
 import com.rms.model.Employee;
@@ -21,16 +20,12 @@ public class EmployeeService {
     @Autowired
     EmployeeDao ed;
 
-    public Employee findById(int id) {
-        return ed.findById(id);
+    public Employee findByEmail(String email) {
+        return ed.findByEmail(email);
     }
 
-    public void save(Employee emp) {
-        ed.save(emp);
-    }
-
-    public void update(Employee emp) {
-        ed.save(emp);
+    public Employee saveOrUpdate(Employee emp) {
+        return ed.save(emp);
     } 
 
     public Employee delete(Employee emp) {
@@ -42,12 +37,13 @@ public class EmployeeService {
         return (List<Employee>) ed.findAll();
     }
 
-	public Employee authenticate(Employee emp) {
-        Optional<Employee> dbu = Optional.ofNullable(ed.findByEmail(emp.getEmail()));
-        if(dbu.isPresent()){
-            return (emp.getPassword().equals(dbu.get().getPassword())) ? dbu.get() : null;
-        }
-        return null;
-    }
+	public boolean login(String email , String password) {
+        Employee emp = ed.findByEmail(email);
+        return (emp.getPassword().equals(password));
+	}
 
+	public Employee deleteByEmail(String email) {
+		return ed.deleteByEmail(email);
+	}
+    
 }
