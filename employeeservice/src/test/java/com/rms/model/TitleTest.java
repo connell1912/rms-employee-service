@@ -26,5 +26,13 @@ import org.junit.Test;
         System.out.println(Title.HR_LEAD.toString());
         assertEquals("HR_LEAD",Title.HR_LEAD.toString());
     }
+
+    @Test
+    public void testConvert(){
+        assertEquals(Title.HR_LEAD, Title.convertStringToEnum("HR_LEAD"));
+        assertEquals(Title.STAGING_MANAGER, Title.convertStringToEnum("STAGING_MANAGER"));
+        assertEquals(Title.TRAINING_LEAD, Title.convertStringToEnum("TRAINING_LEAD"));
+        assertEquals(Title.TRAINING_MANAGER, Title.convertStringToEnum("TRAINING_MANAGER"));
+    }
 }
     
