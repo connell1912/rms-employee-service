@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Robert's batch
+ * @author 1912Java15
  *
- * 
- *         Employee Service
+ *      The dao is wired where we can use the methods in the service layer. 
+ *      Spring takes care on instatiating the dao layer for us.
  */
 @Service
 public class EmployeeService {
