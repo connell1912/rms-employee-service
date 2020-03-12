@@ -16,7 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * EmployeeController
+ * @author 1912dec16 Java Fullstack Batch
+ * <br>
+ * <br>
+ * The EmployeeController class communicates with our front end. This class includes
+ * the annotations: 
+ * @RequestMapping maps the request for our class
+ * @CrossOrigins the communcation with the port tied to the front end
+ * @OtherAnnotations
+ * Other annotations include mappings tied to a specific HTTP method and are used to further describe 
+ * the URL pattern for each method. These methods handle HTTP request differently and will display 
+ * appropriate information once called. This is achieved by communicating with the BatchService class
+ * which is wired using the Autowired annotation.
  */
 @RestController
 @RequestMapping(value = "/employee")
