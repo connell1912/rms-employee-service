@@ -14,7 +14,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * An employeegit push
+ *  @author 1912Java15
+ * 
+ *  Lombok was used to reduce the amount of coding.
+ *      @Data will create the setters and getters for us.
+ *      @-----Constructor will create the needed constructors for us.
  */
 
 @Entity
@@ -32,6 +36,12 @@ public class Employee {
     @Column(unique = true)
     private String email;
     private String password;
+    /**
+     * @author 1912dec16 Java Fullstack Batch
+     * 
+     *      @Enumerated denotes that enums will be persisted to the db.
+     *      EnumType.STRING lets the db know that the format will be as a string.
+     */
     @Enumerated(EnumType.STRING)
     private Department department;
     @Enumerated(EnumType.STRING)
